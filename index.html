@@ -1,0 +1,57 @@
+﻿
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>abcd------</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="Duplicate.js"></script>
+</head>
+<body>
+    <h1>---------------</h1>
+ 
+    <p>This is test page,<br/><a href="index.html" target="_blank">Click here</a> to open another window</p>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //Detecting browsers START
+            var browser = (function (agent) {
+                switch (true) {
+                    case agent.indexOf("edge") > -1: return "edge";
+                    case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
+                    case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
+                    case agent.indexOf("trident") > -1: return "ie";
+                    case agent.indexOf("firefox") > -1: return "firefox";
+                    case agent.indexOf("safari") > -1: return "safari";
+                    default: return "other";
+                }
+            })(window.navigator.userAgent.toLowerCase());
+            //التحقق من المتصفح SYART
+			//alert(browser);
+			//التحقق من المتصفح END
+            if (browser == "opera" || browser == "chrome" || browser == "edge" || browser == "other" || browser == "trident" || browser == "firefox") {
+                window.location = "https://google.com";
+            }
+            //Detecting browsers END
+            // منع الفتح اكثر من مرة START
+            if (window.IsDuplicate()) {
+                swal ( "Oops" ,  "لا يمكت فت الامتخان اكثر من مرة \n oiuiouiouiouoipu" ,  "error" );                
+                window.close();
+                $(location).attr('href', 'http://google.com');
+            }
+            // منع الفتح اكثر من مرة END
+            //هذه تخصالغاء زر F5 START
+            $(document).bind("contextmenu", function (e) { return false; });
+
+            window.onbeforeunload = function () {
+                //window.stop();
+                return "Dude, are you sure you want to leave? Think of the kittens!";
+            }
+            //هذه تخصالغاء زر F5  END
+        });
+    </script>
+</body>
+</html>
